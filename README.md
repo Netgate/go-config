@@ -1,9 +1,10 @@
 # config
 congig.go is a general purpose command line argument and config file parser.
 
-Create a new config
-Add config item specifications to that config
-Call the Read() method got read the command line args, config file items and combine them (with optional defaul values)
+# Create a new config
+1. Add config item specifications to that config
+2. Call the Read() method to read the command line args, config file items and combine them (with optional defaul values)
+3. Use as required by looking up hte config by name in the map
 
 E.g.:
 ```go
@@ -31,6 +32,10 @@ func main() {
 	fmt.Printf("Configuration: %v\n", options)
 
 	tconfig.PrintUsage("test - usage:")
+	
+	if tconfig['verbose'] == "yes" {
+	    fmt.Println("Verbose mode is set")
+	}
 }
 '''
 
