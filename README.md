@@ -4,7 +4,7 @@ congig.go is a general purpose command line argument and config file parser.
 1. Create a new config
 2. Add config item specifications to that config
 3. Call the Read() method to read the command line args, config file items and combine them (with optional default values)
-4. Use as required by looking up hte config by name in the map
+4. Use as required by looking up the config by name in the map
 
 E.g.:
 ```go
