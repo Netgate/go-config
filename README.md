@@ -36,6 +36,8 @@ func main() {
 	if tconfig['verbose'] == "yes" {
 	    fmt.Println("Verbose mode is set")
 	}
+	
+	fmt.Printf("Specified port is %s\n", tconfig['port'])
 }
 ```
 
