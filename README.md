@@ -1,5 +1,6 @@
 # config
-congig.go is a general purpose command line argument and config file parser.
+congig.go is a general purpose command line argument and config file parser. All configuration values are strings with bools being 
+"yes" or "no"
 
 1. Create a new config
 2. Add config item specifications to that config
