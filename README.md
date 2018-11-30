@@ -18,7 +18,7 @@ import (
 
 
 // Configuration defaults
-const dfltConf string = "/etc//myapp/myapp.conf"
+const dfltConf string = "/etc/myapp/myapp.conf"
 const dfltPort string = "12345"                  // Default UDP port
 
 func main() {
