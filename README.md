@@ -18,15 +18,15 @@ import (
 
 
 // Configuration defaults
-const dfltConf string = "/etc/tnsrids/tnsrids.conf"
-const dfltPort string = "12345"                  // Default UDP port on whic alert messages are received
+const dfltConf string = "/etc//myapp/myapp.conf"
+const dfltPort string = "12345"                  // Default UDP port
 
 func main() {
 	var tconfig config.Config
 
 	tconfig.AddOption("verbose", "v", false, "Output log messages to the console", "no")
-	tconfig.AddOption("show", "show", false, "List the current block rules and exit", "no")
-	tconfig.AddOption("port", "p", true, "UDP port on which to listen for alert messages", dfltPort)
+	tconfig.AddOption("show", "show", false, "List the current config and exit", "no")
+	tconfig.AddOption("port", "p", true, "UDP port on which to listen", dfltPort)
 
 	options := tconfig.Read(dfltConf)
 
