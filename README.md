@@ -16,29 +16,31 @@ import (
 	"config"
 )
 
-
 // Configuration defaults
 const dfltConf string = "/etc/myapp/myapp.conf"
 const dfltPort string = "12345"                  // Default UDP port
 
 func main() {
+	// Make a new configuration map
 	var tconfig config.Config
 
+	// Add some options to read from the command line and/or config file
 	tconfig.AddOption("verbose", "v", false, "Output log messages to the console", "no")
 	tconfig.AddOption("show", "show", false, "List the current config and exit", "no")
 	tconfig.AddOption("port", "p", true, "UDP port on which to listen", dfltPort)
 
+	// Read the command line and config file
 	options := tconfig.Read(dfltConf)
 
 	// Print program usage with an optional title
 	tconfig.PrintUsage("test - usage:")
 	
-	// Read the options specified by the user
-	if tconfig['verbose'] == "yes" {
+	// Read some of the options specified by the user
+	if options["verbose"] == "yes" {
 	    fmt.Println("Verbose mode is set")
 	}
 	
-	fmt.Printf("Specified port is %s\n", tconfig['port'])
+	fmt.Printf("Specified port is %s\n", options["port"])
 }
 ```
 
