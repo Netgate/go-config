@@ -30,8 +30,6 @@ func main() {
 
 	options := tconfig.Read(dfltConf)
 
-	fmt.Printf("Configuration: %v\n", options)
-
 	// Print program usage with an optional title
 	tconfig.PrintUsage("test - usage:")
 	
