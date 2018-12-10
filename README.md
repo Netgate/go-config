@@ -32,8 +32,10 @@ func main() {
 
 	fmt.Printf("Configuration: %v\n", options)
 
+	// Print program usage with an optional title
 	tconfig.PrintUsage("test - usage:")
 	
+	// Read the options specified by the user
 	if tconfig['verbose'] == "yes" {
 	    fmt.Println("Verbose mode is set")
 	}

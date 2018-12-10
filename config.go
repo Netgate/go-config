@@ -29,15 +29,6 @@ import (
 	"strings"
 )
 
-// Configuration defaults
-const dfltConf string = "/etc/tnsrids/tnsrids.conf"
-const dfltHost string = "https://localhost"      // Address of TNSR instance
-const dfltMaxage string = "60"                   // Maximum age of rules before they are reap()-ed
-const dfltPort string = "12345"                  // Default UDP port on whic alert messages are received
-const dfltCA string = "/etc/tnsrids/.tls/ca.crt" // Default location of TLS ertificates
-const dfltCert string = "/etc/tnsrids/.tls/tnsr.crt"
-const dfltKey string = "/etc/tnsrids//.tls/tnsr.key"
-
 // A Config is a list of configuration Items that specify the option details
 type Config struct {
 	//	filename string
