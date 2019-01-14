@@ -76,8 +76,10 @@ func (cfg *Config) Read(cfgname string) map[string]string {
 
 	// These two options are added by default so the program knows where to find the config file
 	// and can provide help
-	cfg.AddOption("help", "help", false, "Output usage information to the console", "no")
-	cfg.AddOption("cfgpath", "c", true, "Path to configuration file", cfgname)
+	cfg.AddOption("help", "h", false, "Output usage information to the console", "no")
+	if len(cfgname) > 0 {
+		cfg.AddOption("cfgpath", "c", true, "Path to configuration file", cfgname)
+	}
 
 	argmap := cfg.readArgs()
 
@@ -87,9 +89,13 @@ func (cfg *Config) Read(cfgname string) map[string]string {
 		cfgpath = cfgname
 	}
 
-	confmap, err := readConfigFile(cfgpath)
-	if err != nil {
-		log.Printf("%v", err)
+	confmap := make(map[string]string)
+	var err error
+	if len(cfgname) > 0 {
+		confmap, err = readConfigFile(cfgpath)
+		if err != nil {
+			log.Printf("%v", err)
+		}
 	}
 
 	return cfg.mergeItems(argmap, confmap)
@@ -117,7 +123,7 @@ func (cfg Config) readArgs() map[string]string {
 		if *v {
 			combo[k] = "yes"
 		} else {
-			combo[k] = "no"
+			combo[k] = ""
 		}
 	}
 
