@@ -95,11 +95,10 @@ func (cfg *Config) Read(cfgname string) (map[string]string, error) {
 		confmap, err = readConfigFile(cfgpath)
 		if err != nil {
 			log.Printf("%v", err)
-			return nil, err
 		}
 	}
 
-	return cfg.mergeItems(argmap, confmap), nil
+	return cfg.mergeItems(argmap, confmap), err
 }
 
 // Read the command line arguments by creating a flag entry for each option, then parsing the flags
