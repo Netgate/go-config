@@ -17,7 +17,7 @@
 // config.go contaains all of the funtions required to process the comamnd line arguments, config file values and defaults
 // This was started as an exercise to learn Go flags, methods, structures and maps, but has turned out to be useful here
 // This file can be moved to its own package, or incorporated in another project as here.
-package config 
+package config
 
 import (
 	"bufio"
@@ -71,7 +71,7 @@ func (cfg Config) PrintUsage(title string) {
 // Read the command line arguments
 // Read the config file values
 // Combine the two plus the defaults
-func (cfg *Config) Read(cfgname string) map[string]string {
+func (cfg *Config) Read(cfgname string) (map[string]string, error) {
 	cfgpath := ""
 
 	// These two options are added by default so the program knows where to find the config file
@@ -95,10 +95,11 @@ func (cfg *Config) Read(cfgname string) map[string]string {
 		confmap, err = readConfigFile(cfgpath)
 		if err != nil {
 			log.Printf("%v", err)
+			return nil, err
 		}
 	}
 
-	return cfg.mergeItems(argmap, confmap)
+	return cfg.mergeItems(argmap, confmap), nil
 }
 
 // Read the command line arguments by creating a flag entry for each option, then parsing the flags
